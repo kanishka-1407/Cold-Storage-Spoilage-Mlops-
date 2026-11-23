@@ -1,4 +1,4 @@
-# MP297 – Cold Storage Spoilage Prediction
+# MP297 â€“ Cold Storage Spoilage Prediction
 
 An end-to-end MLOps project that predicts crop spoilage in a cooperative cold store in Dehradun: versioned data, tracked experiments, a registered model, a prediction API, a container, CI, Kubernetes files, structured logging, drift monitoring and retraining.
 
@@ -6,7 +6,7 @@ An end-to-end MLOps project that predicts crop spoilage in a cooperative cold st
 
 | | |
 |---|---|
-| **Course** | SCSE3040 – MLOps (Mini Project) |
+| **Course** | SCSE3040 â€“ MLOps (Mini Project) |
 | **Project name** | Cold Storage Spoilage (Dehradun) |
 | **Group ID** | G083 |
 | **Problem ID** | MP297 |
@@ -34,8 +34,8 @@ Farmers near Dehradun store potatoes, onions and apples in a shared cold store, 
 
 | File | Rows | Period | Notes |
 |---|---|---|---|
-| `data/raw/train.csv` | 1000 | Jan–Jun 2026 | Training data, messy. Tracked with DVC. |
-| `data/raw/later.csv` | 300 | Jul–Aug 2026 | Clean. Used for drift monitoring and retraining. Tracked with DVC. |
+| `data/raw/train.csv` | 1000 | Janâ€“Jun 2026 | Training data, messy. Tracked with DVC. |
+| `data/raw/later.csv` | 300 | Julâ€“Aug 2026 | Clean. Used for drift monitoring and retraining. Tracked with DVC. |
 | `data/raw/holdout_features.csv` | 250 | Sep 2026 | No target. Used for the final prediction. |
 
 The CSV files themselves are not stored in Git. Git stores only the `.dvc` pointer files, which contain each file's hash. To work on the project, place the original CSVs from the project zip into `data/raw/` and do not open or save them in Excel.
@@ -68,11 +68,11 @@ PYTHONPATH=src python -m mp297.run_checks
 ## Pipeline Overview
 
 ```
-Raw data → DVC → detect and clean problems → train models
-→ MLflow (runs, registry, @champion) → FastAPI /predict
-→ Docker image (mp297-api:1.0) → GitHub Actions CI → Kubernetes YAML
-→ JSON logging → drift monitoring (PSI) → retrain v2 → promotion rule
-→ holdout predictions
+Raw data â†’ DVC â†’ detect and clean problems â†’ train models
+â†’ MLflow (runs, registry, @champion) â†’ FastAPI /predict
+â†’ Docker image (mp297-api:1.0) â†’ GitHub Actions CI â†’ Kubernetes YAML
+â†’ JSON logging â†’ drift monitoring (PSI) â†’ retrain v2 â†’ promotion rule
+â†’ holdout predictions
 ```
 
 ## Repository Structure
@@ -100,7 +100,7 @@ mlflow.db             MLflow tracking database
 | Stage | Work | Status |
 |---|---|---|
 | 1 | GitHub repo, DVC, README, data checks, `findings.yaml` (data issues) | Done |
-| 2 | Cleaning code, v1 training with MLflow, model registry, tests | To do |
+| 2 | Cleaning code, v1 training with MLflow, model registry, tests | Done |
 | 3 | FastAPI service, Dockerfile, GitHub Actions, Kubernetes files, JSON logging | To do |
 | 4 | PSI drift, MAE per chamber, retrain v2, promotion decision, holdout predictions | To do |
 

@@ -1,0 +1,35 @@
+data:
+  raw_train: data/raw/train.csv
+  raw_later: data/raw/later.csv
+  holdout_features: data/raw/holdout_features.csv
+  target: spoilage_pct
+  id_cols:
+    - record_id
+    - date
+  leak_cols:
+    - spoilage_found_at_unloading
+  num_features:
+    - storage_days
+    - temp_set_c
+    - humidity_pct
+    - power_cuts_hours
+    - bag_weight_kg
+    - door_openings_per_day
+  cat_features:
+    - crop
+    - chamber
+
+cleaning:
+  sentinel_power_cuts: 9999.0
+  stuck_humidity_val: 83.0
+  stuck_start: "2026-04-14"
+  stuck_end: "2026-05-02"
+  target_typo_threshold: 30.0
+
+training:
+  test_size: 0.2
+  random_state: 42
+  mlflow_tracking_uri: "sqlite:///mlflow.db"
+  experiment_name: "mp297-cold-storage-spoilage"
+  registered_model_name: "mp297-spoilage-predictor"
+  champion_model_path: "models/model.joblib"
